@@ -24,7 +24,7 @@ def get_email(destination: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-H", "--host", type=str, help="Which host to bind", default="127.0.0.1"
+        "-H", "--host", type=str, help="Which host to bind", default="0.0.0.0"
     )
     parser.add_argument(
         "-p", "--port", type=int, help="Port number to use for connection", default=5000
