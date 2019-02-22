@@ -1,5 +1,5 @@
 # sese
-sese is extended ses mock based on moto-server
+sese is moto-server based extended ses mock.
 
 ## How to use
 ### Server
