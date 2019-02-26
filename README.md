@@ -4,6 +4,12 @@ sese is moto-server based extended ses mock.
 ## How to use
 ### Server
 ```bash
+docker pull orisano/sese
+docker run --init -p 5000:5000 orisano/sese
+```
+
+or
+```bash
 git clone --depth=1 https://github.com/orisano/sese
 cd sese
 docker build -t sese .
