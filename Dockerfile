@@ -11,5 +11,5 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev
     chown -R sese:sese /usr/local/lib/python3.7 && \
     rm -rf /root/.cache 
 COPY --chown=sese . .
-EXPOSE 8080
-CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--http-socket", ":8080", "--module", "app:app"]
+EXPOSE 5000
+CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--http-socket", ":5000", "--module", "app:app"]
