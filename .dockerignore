@@ -1,3 +1,5 @@
 .venv
 raw_mail.json
 test.sh
+.git
+Dockerfile

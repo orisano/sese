@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 moto = "*"
 flask = "*"
+uwsgi = "*"
 
 [dev-packages]
 awscli = "*"

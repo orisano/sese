@@ -1,8 +1,15 @@
 FROM python:3.7-alpine
-WORKDIR /var/app
-RUN pip install pipenv
-RUN apk add --no-cache gcc musl-dev libffi-dev openssl-dev
-COPY ./Pipfile ./Pipfile.lock ./
-RUN pipenv install --system
-COPY . .
-ENTRYPOINT ["python", "app.py"]
+WORKDIR /usr/local/app
+RUN addgroup -g 1000 sese && adduser -u 1000 -G sese -D sese
+COPY --chown=sese ./Pipfile ./Pipfile.lock ./
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev pcre-dev && \
+    apk add --no-cache --virtual .run-deps musl libffi openssl pcre && \
+    pip3 install --no-cache pipenv==2018.11.26 && \
+    pipenv install --system --clear --deploy && \
+    apk del .build-deps && \
+    rm -rf /usr/local/lib/python3.7/config-3.7m-x86_64-linux-gnu && \
+    chown -R sese:sese /usr/local/lib/python3.7 && \
+    rm -rf /root/.cache 
+COPY --chown=sese . .
+EXPOSE 8080
+CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--http-socket", ":8080", "--module", "app:app"]
