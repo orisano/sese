@@ -12,4 +12,4 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev
     rm -rf /root/.cache 
 COPY --chown=sese . .
 EXPOSE 5000
-CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--http-socket", ":5000", "--module", "app:app"]
+CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--workers", "1", "--http-socket", ":5000", "--module", "app:app"]
