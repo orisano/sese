@@ -3,7 +3,7 @@ import email
 import email.parser
 import email.policy
 import email.header
-import typing
+import os
 
 import flask
 import moto.server
@@ -57,6 +57,12 @@ def get_email(destination: str):
     return flask.jsonify(
         [message_to_dict(msg) for msg in messages if in_destination(destination, msg)]
     )
+
+
+_verified_domains = os.getenv("VERIFIED_DOMAINS")
+if _verified_domains:
+    for domain in _verified_domains.split(","):
+        moto.ses.ses_backend.verify_domain(domain.strip())
 
 
 if __name__ == "__main__":
