@@ -9,7 +9,8 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev
     apk del .build-deps && \
     rm -rf /usr/local/lib/python3.7/config-3.7m-x86_64-linux-gnu && \
     chown -R sese:sese /usr/local/lib/python3.7 && \
-    rm -rf /root/.cache 
+    rm -rf /root/.cache
 COPY --chown=sese . .
 EXPOSE 5000
+STOPSIGNAL SIGQUIT
 CMD ["uwsgi", "--uid", "sese", "--thunder-lock", "--master", "--enable-threads", "--workers", "1", "--http-socket", ":5000", "--module", "app:app"]
