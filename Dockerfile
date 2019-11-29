@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.8-alpine
 WORKDIR /usr/local/app
 RUN addgroup -g 1000 sese && adduser -u 1000 -G sese -D sese
 COPY --chown=sese ./Pipfile ./Pipfile.lock ./
@@ -7,8 +7,8 @@ RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev openssl-dev
     pip3 install --no-cache pipenv==2018.11.26 && \
     pipenv install --system --clear --deploy && \
     apk del .build-deps && \
-    rm -rf /usr/local/lib/python3.7/config-3.7m-x86_64-linux-gnu && \
-    chown -R sese:sese /usr/local/lib/python3.7 && \
+    rm -rf /usr/local/lib/python3.8/config-3.8m-x86_64-linux-gnu && \
+    chown -R sese:sese /usr/local/lib/python3.8 && \
     rm -rf /root/.cache
 COPY --chown=sese . .
 EXPOSE 5000
