@@ -35,7 +35,7 @@ curl http://localhost:5000/message/to@example.com
 ```
 
 ## Author
-Nao YONASHIRO (@orisano)
+Nao Yonashiro (@orisano)
 
 ## License
 MIT
