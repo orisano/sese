@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3.9-alpine
 WORKDIR /usr/local/app
 RUN addgroup -g 1000 sese && adduser -u 1000 -G sese -D sese
 COPY --chown=sese ./Pipfile ./Pipfile.lock ./
