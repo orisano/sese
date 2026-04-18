@@ -6,11 +6,18 @@ import email.header
 import os
 
 import flask
-import moto.server
 import moto.ses
 import moto.ses.models
+from moto.moto_server.werkzeug_app import create_backend_app
 
-app: flask.Flask = moto.server.create_backend_app("ses")
+app: flask.Flask = create_backend_app("ses")
+
+DEFAULT_ACCOUNT_ID = "123456789012"
+DEFAULT_REGION = "us-east-1"
+
+
+def _ses_backend():
+    return moto.ses.ses_backends[DEFAULT_ACCOUNT_ID][DEFAULT_REGION]
 
 
 def in_destination(destination, msg):
@@ -53,7 +60,7 @@ def decode_header(encoded_header):
 
 @app.route("/message/<destination>", methods=["GET"])
 def get_email(destination: str):
-    messages = moto.ses.ses_backend.sent_messages
+    messages = _ses_backend().sent_messages
     return flask.jsonify(
         [message_to_dict(msg) for msg in messages if in_destination(destination, msg)]
     )
@@ -62,7 +69,7 @@ def get_email(destination: str):
 _verified_domains = os.getenv("VERIFIED_DOMAINS")
 if _verified_domains:
     for domain in _verified_domains.split(","):
-        moto.ses.ses_backend.verify_domain(domain.strip())
+        _ses_backend().verify_domain(domain.strip())
 
 
 if __name__ == "__main__":

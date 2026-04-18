@@ -1,0 +1,18 @@
+[project]
+name = "sese"
+version = "0.0.0"
+requires-python = ">=3.14"
+dependencies = [
+    "moto[server]",
+    "flask",
+    "uwsgi",
+]
+
+[dependency-groups]
+dev = [
+    "awscli",
+    "ruff",
+]
+
+[tool.uv]
+prerelease = "allow"
