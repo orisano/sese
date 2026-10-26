@@ -341,11 +341,11 @@ wheels = [
 
 [[package]]
 name = "graphql-core"
-version = "3.3.0a12"
+version = "3.3.0rc1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/e4/d2/ed926fe3d491604bf23e5c9b33e0185dfa15ae3b26fe8a15797314d66df8/graphql_core-3.3.0a12.tar.gz", hash = "sha256:be79996d640f67b2a240fede0eceb1fd1eb367aaab374747886a9eba75e64f22", size = 555400, upload-time = "2026-03-05T16:22:56.788Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/12/1c/c682bdf87c9508fc09d263dbb027e2b126211f92377033e1ee7408a293c6/graphql_core-3.3.0rc1.tar.gz", hash = "sha256:2e8b4e7d7df95a6da6ab1aa5a5e6f372f3d49ede7a554e2ce701740d5fc6b467", size = 667429, upload-time = "2026-08-27T20:27:12.263Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/5e/3f/7f4c3becebb10bd5669acb60bd024b8493e47475d8bf8a66b54e49784e5c/graphql_core-3.3.0a12-py3-none-any.whl", hash = "sha256:54bb48350641861fac2b2c851d1aeeaef2891972865979ce6972284123e4d124", size = 234105, upload-time = "2026-03-05T16:22:55.199Z" },
+    { url = "https://files.pythonhosted.org/packages/7f/58/4e6e1db5abe99ee3342a98e565303f7045bef6f589699dc07b6ecf4b749f/graphql_core-3.3.0rc1-py3-none-any.whl", hash = "sha256:599c4591a4b1f662be6d384f6f0ffa09022eb5a46875824598af30b7c2160c6c", size = 284062, upload-time = "2026-08-27T20:27:10.605Z" },
 ]
 
 [[package]]
